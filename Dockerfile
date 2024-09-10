@@ -16,6 +16,10 @@ RUN apk add --no-cache \
 RUN opm get ledgetech/lua-resty-http \
     && opm get bungle/lua-resty-session
 
+# Create log directory and set permissions
+RUN mkdir -p /var/log/nginx \
+    && chown -R nobody:nobody /var/log/nginx
+
 # Set up the working directory
 WORKDIR /usr/local/openresty/nginx
 
